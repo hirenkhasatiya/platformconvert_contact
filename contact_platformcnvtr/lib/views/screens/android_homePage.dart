@@ -1,6 +1,5 @@
 import 'package:contact_platformcnvtr/controller/Navigationbar_Controller.dart';
 import 'package:contact_platformcnvtr/controller/platform_controller.dart';
-import 'package:contact_platformcnvtr/views/screens/A_contact_Home.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,11 +24,23 @@ class android_HomePage extends StatelessWidget {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.purple.shade900,
         animationDuration: const Duration(milliseconds: 300),
-        items: const [
-          Icon(Icons.home_filled),
-          Icon(Icons.add_box),
-          Icon(Icons.edit),
-          Icon(Icons.settings),
+        items: [
+          Icon(
+            Icons.add_box,
+            color: Colors.purple.shade900,
+          ),
+          Icon(
+            Icons.chat,
+            color: Colors.purple.shade900,
+          ),
+          Icon(
+            Icons.call,
+            color: Colors.purple.shade900,
+          ),
+          Icon(
+            Icons.settings,
+            color: Colors.purple.shade900,
+          ),
         ],
         onTap: (index) {
           Provider.of<navigationbarController>(context, listen: false)

@@ -14,12 +14,13 @@ class contactController extends ChangeNotifier {
   List<String> allNames = [];
   List<String> allEmails = [];
   List<String> allContacts = [];
-  List<String> allImages = [];
+  List<String> allmsg = [];
 
   init() {
     allNames = preferences.getStringList("name") ?? [];
     allEmails = preferences.getStringList("Email") ?? [];
     allContacts = preferences.getStringList("number") ?? [];
+    allmsg = preferences.getStringList("msg") ?? [];
 
     _allcontact = List.generate(
       allNames.length,
@@ -27,6 +28,7 @@ class contactController extends ChangeNotifier {
         name: allNames[index],
         email: allEmails[index],
         number: allContacts[index],
+        msg: allmsg[index],
       ),
     );
   }
@@ -35,7 +37,8 @@ class contactController extends ChangeNotifier {
     preferences
       ..setStringList("name", allNames)
       ..setStringList("Email", allEmails)
-      ..setStringList("number", allContacts);
+      ..setStringList("number", allContacts)
+      ..setStringList("msg", allmsg);
 
     notifyListeners();
   }
@@ -52,6 +55,7 @@ class contactController extends ChangeNotifier {
       allNames.add(contact.name);
       allEmails.add(contact.email);
       allContacts.add(contact.number);
+      allmsg.add(contact.msg);
 
       set();
     }
@@ -64,18 +68,18 @@ class contactController extends ChangeNotifier {
     allNames[index] = contact.name;
     allEmails[index] = contact.email;
     allContacts[index] = contact.number;
+    allmsg[index] = contact.msg;
 
     set();
   }
 
-  removeContact({required Contact contact}) {
+  removeContact({required int index}) {
     init();
-
-    int index = _allcontact.indexOf(contact);
 
     allNames.removeAt(index);
     allEmails.removeAt(index);
     allContacts.removeAt(index);
+    allmsg.removeAt(index);
 
     set();
 

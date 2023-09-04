@@ -1,16 +1,16 @@
 import 'package:contact_platformcnvtr/controller/contact_controller.dart';
-import 'package:contact_platformcnvtr/views/screens/A_contact_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Modals/contact_Modal.dart';
 
-class contactHome extends StatelessWidget {
-  const contactHome({super.key});
+class contactPage extends StatelessWidget {
+  const contactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple.shade900,
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Consumer<contactController>(
@@ -26,10 +26,17 @@ class contactHome extends StatelessWidget {
                       },
                       child: Card(
                         child: ListTile(
-                          leading: CircleAvatar(
-                            child: Text(contact.name[0].toUpperCase()),
+                          trailing: IconButton(
+                            onPressed: () {
+                              Provider.removeContact(index: index);
+                            },
+                            icon: Icon(Icons.delete),
                           ),
-                          title: Text(contact.name),
+                          leading: CircleAvatar(
+                            child: Icon(Icons.person),
+                          ),
+                          title: Text(contact.name,
+                              style: TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(contact.number),
                         ),
                       ),
@@ -42,7 +49,7 @@ class contactHome extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple.shade900),
+                        color: Colors.white),
                   ),
                 ),
         ),
