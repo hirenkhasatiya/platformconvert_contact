@@ -1,17 +1,17 @@
 import 'package:contact_platformcnvtr/controller/contact_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Modals/contact_Modal.dart';
 
-class contactPage extends StatelessWidget {
-  const contactPage({super.key});
+class iOSchatPage extends StatelessWidget {
+  const iOSchatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple.shade900,
-      body: Padding(
+    return CupertinoPageScaffold(
+      child: Padding(
         padding: EdgeInsets.all(16),
         child: Consumer<contactController>(
           builder: (context, Provider, child) => Provider.getContact.isNotEmpty
@@ -20,24 +20,19 @@ class contactPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     Contact contact = Provider.getContact[index];
                     return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed('Detail_Page', arguments: index);
+                      onVerticalDragEnd: (val) {
+                        Provider.removeContact(index: index);
                       },
                       child: Card(
                         child: ListTile(
-                          trailing: IconButton(
-                            onPressed: () {
-                              Provider.removeContact(index: index);
-                            },
-                            icon: Icon(Icons.delete),
-                          ),
                           leading: CircleAvatar(
-                            child: Icon(Icons.person),
+                            backgroundColor: Colors.purple.shade900,
+                            child: Text(contact.name[0].toUpperCase(),
+                                style: TextStyle(color: Colors.white)),
                           ),
                           title: Text(contact.name,
                               style: TextStyle(fontWeight: FontWeight.bold)),
-                          subtitle: Text(contact.number),
+                          subtitle: Text(contact.message),
                         ),
                       ),
                     );
@@ -45,11 +40,11 @@ class contactPage extends StatelessWidget {
                 )
               : Center(
                   child: Text(
-                    "No Contact",
+                    "No Message",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        color: Colors.purple.shade900),
                   ),
                 ),
         ),

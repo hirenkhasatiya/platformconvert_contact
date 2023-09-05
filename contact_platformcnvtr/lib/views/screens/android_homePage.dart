@@ -24,9 +24,10 @@ class android_HomePage extends StatelessWidget {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.purple.shade900,
         animationDuration: const Duration(milliseconds: 300),
+        index: Provider.of<navigationbarController>(context).selectedIndex,
         items: [
           Icon(
-            Icons.add_box,
+            Icons.person_add_alt_1,
             color: Colors.purple.shade900,
           ),
           Icon(
@@ -47,8 +48,8 @@ class android_HomePage extends StatelessWidget {
               .changeScreen(index: index);
         },
       ),
-      body: Provider.of<navigationbarController>(context)
-          .Screens[Provider.of<navigationbarController>(context).selectedIndex],
+      body: Provider.of<navigationbarController>(context).androidScreens[
+          Provider.of<navigationbarController>(context).selectedIndex],
     );
   }
 }

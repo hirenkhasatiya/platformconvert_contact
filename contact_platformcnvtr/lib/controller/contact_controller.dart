@@ -7,6 +7,10 @@ import '../Modals/contact_Modal.dart';
 class contactController extends ChangeNotifier {
   List<Contact> _allcontact = [];
 
+  DateTime Date = DateTime.now();
+
+  TimeOfDay Time = TimeOfDay.now();
+
   late SharedPreferences preferences;
 
   contactController({required this.preferences});
@@ -15,12 +19,16 @@ class contactController extends ChangeNotifier {
   List<String> allEmails = [];
   List<String> allContacts = [];
   List<String> allmsg = [];
+  List<String> allTime = [];
+  List<String> allDate = [];
 
-  init() {
+  initData() {
     allNames = preferences.getStringList("name") ?? [];
     allEmails = preferences.getStringList("Email") ?? [];
     allContacts = preferences.getStringList("number") ?? [];
     allmsg = preferences.getStringList("msg") ?? [];
+    allTime = preferences.getStringList("time") ?? [];
+    allDate = preferences.getStringList("date") ?? [];
 
     _allcontact = List.generate(
       allNames.length,
@@ -28,23 +36,27 @@ class contactController extends ChangeNotifier {
         name: allNames[index],
         email: allEmails[index],
         number: allContacts[index],
-        msg: allmsg[index],
+        message: allmsg[index],
+        Date: allDate[index],
+        Time: allTime[index],
       ),
     );
   }
 
-  set() {
+  setData() {
     preferences
       ..setStringList("name", allNames)
       ..setStringList("Email", allEmails)
       ..setStringList("number", allContacts)
-      ..setStringList("msg", allmsg);
+      ..setStringList("msg", allmsg)
+      ..setStringList("time", allTime)
+      ..setStringList("date", allDate);
 
     notifyListeners();
   }
 
   List<Contact> get getContact {
-    init();
+    initData();
     return _allcontact;
   }
 
@@ -55,34 +67,50 @@ class contactController extends ChangeNotifier {
       allNames.add(contact.name);
       allEmails.add(contact.email);
       allContacts.add(contact.number);
-      allmsg.add(contact.msg);
+      allmsg.add(contact.message);
+      allTime.add(contact.Time);
+      allDate.add(contact.Date);
 
-      set();
+      setData();
     }
     notifyListeners();
   }
 
   editContact({required int index, required Contact contact}) {
-    init();
+    initData();
 
     allNames[index] = contact.name;
     allEmails[index] = contact.email;
     allContacts[index] = contact.number;
-    allmsg[index] = contact.msg;
+    allmsg[index] = contact.message;
+    allDate[index] = contact.Date;
+    allTime[index] = contact.Time;
 
-    set();
+    setData();
   }
 
   removeContact({required int index}) {
-    init();
+    initData();
 
     allNames.removeAt(index);
     allEmails.removeAt(index);
     allContacts.removeAt(index);
     allmsg.removeAt(index);
+    allTime.removeAt(index);
+    allDate.removeAt(index);
 
-    set();
+    setData();
 
+    notifyListeners();
+  }
+
+  dateTimeChange({required DateTime dateTime}) {
+    Date = dateTime;
+    notifyListeners();
+  }
+
+  timeChange({required TimeOfDay time}) {
+    Time = time;
     notifyListeners();
   }
 

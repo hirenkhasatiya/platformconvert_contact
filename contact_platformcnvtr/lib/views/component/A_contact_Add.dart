@@ -88,31 +88,83 @@ class contactAdd extends StatelessWidget {
                     Column(
                       children: [
                         ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              TimeOfDay? time = await showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                              );
+                              if (time != null) {
+                                Provider.of<contactController>(context,
+                                        listen: false)
+                                    .timeChange(time: time);
+                              }
+                            },
                             child: Row(
                               children: [
                                 Icon(Icons.watch_later_outlined),
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text("Time")
+                                Text("Time"),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Consumer<contactController>(
+                                    builder: (context, Provider, child) {
+                                  return Text(
+                                    "${Provider.Time.hour % 12} : ${Provider.Time.minute} ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9,
+                                    ),
+                                  );
+                                }),
                               ],
-                            ))
+                            )),
                       ],
                     ),
                     Column(
                       children: [
                         ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              DateTime? date = await showDatePicker(
+                                context: context,
+                                initialDate: Provider.of<contactController>(
+                                        context,
+                                        listen: false)
+                                    .Date,
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime.now().add(
+                                  Duration(days: 5),
+                                ),
+                              );
+                              if (date != null) {
+                                Provider.of<contactController>(context,
+                                        listen: false)
+                                    .dateTimeChange(dateTime: date);
+                              }
+                            },
                             child: Row(
                               children: [
                                 Icon(Icons.date_range),
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text("Date")
+                                Text("Date"),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Consumer<contactController>(
+                                    builder: (context, Provider, child) {
+                                  return Text(
+                                    "${Provider.Date.day} / ${Provider.Date.month} / ${Provider.Date.year}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 9),
+                                  );
+                                }),
                               ],
-                            ))
+                            )),
                       ],
                     ),
                   ],
@@ -132,7 +184,9 @@ class contactAdd extends StatelessWidget {
               name: name,
               number: contact,
               email: email,
-              msg: msg,
+              message: msg,
+              Date: date,
+              Time: time,
             );
 
             Provider.of<contactController>(context, listen: false)

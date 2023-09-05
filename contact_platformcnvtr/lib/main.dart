@@ -3,6 +3,7 @@ import 'package:contact_platformcnvtr/controller/contact_controller.dart';
 import 'package:contact_platformcnvtr/controller/platform_controller.dart';
 import 'package:contact_platformcnvtr/views/screens/android_contact_detail.dart';
 import 'package:contact_platformcnvtr/views/screens/android_homePage.dart';
+import 'package:contact_platformcnvtr/views/screens/iOS_contact_detail.dart';
 import 'package:contact_platformcnvtr/views/screens/iOS_homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,12 +72,16 @@ class MyApp extends StatelessWidget {
                 : ThemeMode.light,
             routes: {
               '/': (context) => android_HomePage(),
-              'Detail_Page': (context) => DetailPage(),
+              'Detail_Page': (context) => A_DetailPage(),
             },
           )
         : CupertinoApp(
             debugShowCheckedModeBanner: false,
-            home: iOS_homePage(),
+            theme: CupertinoThemeData(brightness: Brightness.light),
+            routes: {
+              '/': (context) => iOS_homePage(),
+              'Detail_Page': (context) => i_DetailPage(),
+            },
           );
   }
 }

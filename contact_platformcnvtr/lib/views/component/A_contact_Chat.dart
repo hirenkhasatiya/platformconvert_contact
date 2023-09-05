@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../Modals/contact_Modal.dart';
 
-class contactEdit extends StatelessWidget {
-  const contactEdit({super.key});
+class contactChat extends StatelessWidget {
+  const contactChat({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,16 @@ class contactEdit extends StatelessWidget {
                           ),
                           title: Text(contact.name,
                               style: TextStyle(fontWeight: FontWeight.bold)),
-                          subtitle: Text(contact.msg),
+                          subtitle: Text("${contact.message}"),
+                          trailing: Consumer<contactController>(
+                              builder: (context, Provider, child) {
+                            return Text(
+                              "${Provider.Time.hour % 12} : ${Provider.Time.minute} ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black.withOpacity(0.5)),
+                            );
+                          }),
                         ),
                       ),
                     );

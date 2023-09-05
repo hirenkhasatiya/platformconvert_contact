@@ -1,17 +1,17 @@
 import 'package:contact_platformcnvtr/controller/contact_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Modals/contact_Modal.dart';
 
-class contactPage extends StatelessWidget {
-  const contactPage({super.key});
+class iOScontactPage extends StatelessWidget {
+  const iOScontactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple.shade900,
-      body: Padding(
+    return CupertinoPageScaffold(
+      child: Padding(
         padding: EdgeInsets.all(16),
         child: Consumer<contactController>(
           builder: (context, Provider, child) => Provider.getContact.isNotEmpty
@@ -33,7 +33,11 @@ class contactPage extends StatelessWidget {
                             icon: Icon(Icons.delete),
                           ),
                           leading: CircleAvatar(
-                            child: Icon(Icons.person),
+                            backgroundColor: Colors.purple.shade900,
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
                           ),
                           title: Text(contact.name,
                               style: TextStyle(fontWeight: FontWeight.bold)),
@@ -47,9 +51,9 @@ class contactPage extends StatelessWidget {
                   child: Text(
                     "No Contact",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        color: Colors.purple.shade900),
                   ),
                 ),
         ),

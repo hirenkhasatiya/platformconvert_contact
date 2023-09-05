@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../Modals/contact_Modal.dart';
 import '../../controller/contact_controller.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+class A_DetailPage extends StatelessWidget {
+  const A_DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,6 @@ class DetailPage extends StatelessWidget {
         backgroundColor: Colors.purple.shade900,
         foregroundColor: Colors.white,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.edit),
-          ),
           Consumer<contactController>(builder: (context, Provider, child) {
             Contact contact = Provider.getContact[contact_detail];
             return PopupMenuButton(
@@ -33,8 +29,6 @@ class DetailPage extends StatelessWidget {
                 ),
                 PopupMenuItem(
                   onTap: () {
-                    // debugPrint(Provider.);
-                    // Provider.removeContact(contact: contact);
                     Navigator.of(context).pop();
                   },
                   child: Text("Delete Contact"),
