@@ -22,6 +22,7 @@ class android_HomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.white,
         backgroundColor: Colors.purple.shade900,
         animationDuration: const Duration(milliseconds: 300),
         index: Provider.of<navigationbarController>(context).selectedIndex,

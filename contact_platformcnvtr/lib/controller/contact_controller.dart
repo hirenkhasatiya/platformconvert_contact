@@ -73,6 +73,7 @@ class contactController extends ChangeNotifier {
 
       setData();
     }
+
     notifyListeners();
   }
 

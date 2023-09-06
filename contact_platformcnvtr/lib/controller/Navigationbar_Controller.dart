@@ -6,7 +6,7 @@ import 'package:contact_platformcnvtr/views/component/i_contact_Theme.dart';
 import 'package:flutter/material.dart';
 
 import '../views/component/A_contactPage.dart';
-import '../views/component/A_contact_Theme.dart';
+import '../views/component/A_setting.dart';
 import '../views/component/A_contact_Chat.dart';
 
 class navigationbarController extends ChangeNotifier {
@@ -16,7 +16,7 @@ class navigationbarController extends ChangeNotifier {
     const contactAdd(),
     const contactChat(),
     const contactPage(),
-    const contactTheme(),
+    const settingPage(),
   ];
   List iOSScreens = [
     const iOScontactAdd(),

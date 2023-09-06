@@ -12,7 +12,7 @@ class iOScontactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Consumer<contactController>(
           builder: (context, Provider, child) => Provider.getContact.isNotEmpty
               ? ListView.builder(
@@ -30,30 +30,31 @@ class iOScontactPage extends StatelessWidget {
                             onPressed: () {
                               Provider.removeContact(index: index);
                             },
-                            icon: Icon(Icons.delete),
+                            icon: const Icon(Icons.delete),
                           ),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.purple.shade900,
+                          leading: const CircleAvatar(
+                            backgroundColor: CupertinoColors.systemIndigo,
                             child: Icon(
                               Icons.person,
                               color: Colors.white,
                             ),
                           ),
                           title: Text(contact.name,
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(contact.number),
                         ),
                       ),
                     );
                   },
                 )
-              : Center(
+              : const Center(
                   child: Text(
                     "No Contact",
                     style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple.shade900),
+                        color: CupertinoColors.systemIndigo),
                   ),
                 ),
         ),

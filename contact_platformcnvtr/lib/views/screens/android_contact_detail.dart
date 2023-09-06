@@ -19,7 +19,7 @@ class A_DetailPage extends StatelessWidget {
           Consumer<contactController>(builder: (context, Provider, child) {
             Contact contact = Provider.getContact[contact_detail];
             return PopupMenuButton(
-              offset: Offset(70, 50),
+              offset: const Offset(70, 50),
               itemBuilder: (context) => [
                 const PopupMenuItem(
                   child: Text("settings"),
@@ -31,7 +31,7 @@ class A_DetailPage extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text("Delete Contact"),
+                  child: const Text("Delete Contact"),
                 ),
               ],
             );
@@ -39,7 +39,7 @@ class A_DetailPage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Center(
           child: Consumer<contactController>(
             builder: (context, Provider, child) {
@@ -51,13 +51,14 @@ class A_DetailPage extends StatelessWidget {
                     radius: 60,
                     child: Text(
                       contact.name[0].toUpperCase(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
                   ),
-                  SelectableText(contact.name, style: TextStyle(fontSize: 20)),
+                  SelectableText(contact.name,
+                      style: const TextStyle(fontSize: 20)),
                   const Divider(),
                   Consumer<contactController>(
                       builder: (context, Provider, child) {
@@ -69,7 +70,7 @@ class A_DetailPage extends StatelessWidget {
                           onPressed: () {
                             Provider.call(number: contact.number);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.call,
                             color: Colors.white,
                           ),
@@ -79,7 +80,7 @@ class A_DetailPage extends StatelessWidget {
                           onPressed: () {
                             Provider.sms(path: contact.name);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.message_outlined,
                             color: Colors.white,
                           ),
@@ -89,7 +90,7 @@ class A_DetailPage extends StatelessWidget {
                           onPressed: () {
                             Provider.email(email: contact.email);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.email,
                             color: Colors.white,
                           ),
@@ -100,7 +101,7 @@ class A_DetailPage extends StatelessWidget {
                             // await Share.share(
                             //     "${contact.name} \n\n${contact.number}");
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.share,
                             color: Colors.white,
                           ),
@@ -109,11 +110,11 @@ class A_DetailPage extends StatelessWidget {
                     );
                   }),
                   const Divider(),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade200,
@@ -121,20 +122,22 @@ class A_DetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Contact Info",
                           style: TextStyle(
                             fontSize: 14,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Text(contact.number, style: TextStyle(fontSize: 15)),
-                        SizedBox(
+                        Text(contact.number,
+                            style: const TextStyle(fontSize: 15)),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(contact.email, style: TextStyle(fontSize: 15)),
+                        Text(contact.email,
+                            style: const TextStyle(fontSize: 15)),
                       ],
                     ),
                   ),

@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(
                   backgroundColor: Colors.purple.shade900,
                   foregroundColor: Colors.white),
-              timePickerTheme: TimePickerThemeData(
+              timePickerTheme: const TimePickerThemeData(
                 backgroundColor: Colors.white,
               ),
               elevatedButtonTheme: ElevatedButtonThemeData(
@@ -71,16 +71,16 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
             routes: {
-              '/': (context) => android_HomePage(),
-              'Detail_Page': (context) => A_DetailPage(),
+              '/': (context) => const android_HomePage(),
+              'Detail_Page': (context) => const A_DetailPage(),
             },
           )
         : CupertinoApp(
             debugShowCheckedModeBanner: false,
-            theme: CupertinoThemeData(brightness: Brightness.light),
+            theme: const CupertinoThemeData(brightness: Brightness.light),
             routes: {
-              '/': (context) => iOS_homePage(),
-              'Detail_Page': (context) => i_DetailPage(),
+              '/': (context) => const iOS_homePage(),
+              'Detail_Page': (context) => const i_DetailPage(),
             },
           );
   }

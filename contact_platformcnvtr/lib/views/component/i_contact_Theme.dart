@@ -10,26 +10,26 @@ class iOScontactTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Padding(
-        padding: EdgeInsets.only(top: 40, left: 16, right: 16),
+        padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
         child: Card(
           child: Row(
             children: [
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Select Theme",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple.shade900),
+                        color: CupertinoColors.systemIndigo),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 160,
                   ),
                   Consumer<themeController>(
                       builder: (context, Provider, child) {
                     return CupertinoSwitch(
-                        activeColor: Colors.purple.shade900,
+                        activeColor: CupertinoColors.systemIndigo,
                         value: Provider.getTheme,
                         onChanged: (val) {
                           Provider.changeTheme();

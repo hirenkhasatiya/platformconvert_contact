@@ -19,9 +19,9 @@ class contactAdd extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.purple.shade900,
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -101,19 +101,19 @@ class contactAdd extends StatelessWidget {
                             },
                             child: Row(
                               children: [
-                                Icon(Icons.watch_later_outlined),
-                                SizedBox(
+                                const Icon(Icons.watch_later_outlined),
+                                const SizedBox(
                                   width: 5,
                                 ),
-                                Text("Time"),
-                                SizedBox(
+                                const Text("Time"),
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Consumer<contactController>(
                                     builder: (context, Provider, child) {
                                   return Text(
                                     "${Provider.Time.hour % 12} : ${Provider.Time.minute} ",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9,
                                     ),
@@ -135,7 +135,7 @@ class contactAdd extends StatelessWidget {
                                     .Date,
                                 firstDate: DateTime(2000),
                                 lastDate: DateTime.now().add(
-                                  Duration(days: 5),
+                                  const Duration(days: 5),
                                 ),
                               );
                               if (date != null) {
@@ -146,19 +146,19 @@ class contactAdd extends StatelessWidget {
                             },
                             child: Row(
                               children: [
-                                Icon(Icons.date_range),
-                                SizedBox(
+                                const Icon(Icons.date_range),
+                                const SizedBox(
                                   width: 5,
                                 ),
-                                Text("Date"),
-                                SizedBox(
+                                const Text("Date"),
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Consumer<contactController>(
                                     builder: (context, Provider, child) {
                                   return Text(
                                     "${Provider.Date.day} / ${Provider.Date.month} / ${Provider.Date.year}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 9),
                                   );
@@ -192,7 +192,7 @@ class contactAdd extends StatelessWidget {
             Provider.of<contactController>(context, listen: false)
                 .addContact(contact: c);
           },
-          child: Icon(Icons.done),
+          child: const Icon(Icons.done),
         ),
       ),
     );

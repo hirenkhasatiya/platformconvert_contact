@@ -12,7 +12,7 @@ class iOSchatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Consumer<contactController>(
           builder: (context, Provider, child) => Provider.getContact.isNotEmpty
               ? ListView.builder(
@@ -26,25 +26,27 @@ class iOSchatPage extends StatelessWidget {
                       child: Card(
                         child: ListTile(
                           leading: CircleAvatar(
-                            backgroundColor: Colors.purple.shade900,
+                            backgroundColor: CupertinoColors.systemIndigo,
                             child: Text(contact.name[0].toUpperCase(),
-                                style: TextStyle(color: Colors.white)),
+                                style: const TextStyle(color: Colors.white)),
                           ),
                           title: Text(contact.name,
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(contact.message),
+                          trailing: Text(contact.Time),
                         ),
                       ),
                     );
                   },
                 )
-              : Center(
+              : const Center(
                   child: Text(
                     "No Message",
                     style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple.shade900),
+                        color: CupertinoColors.systemIndigo),
                   ),
                 ),
         ),

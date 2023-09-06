@@ -12,7 +12,7 @@ class contactPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.purple.shade900,
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Consumer<contactController>(
           builder: (context, Provider, child) => Provider.getContact.isNotEmpty
               ? ListView.builder(
@@ -30,20 +30,21 @@ class contactPage extends StatelessWidget {
                             onPressed: () {
                               Provider.removeContact(index: index);
                             },
-                            icon: Icon(Icons.delete),
+                            icon: const Icon(Icons.delete),
                           ),
-                          leading: CircleAvatar(
+                          leading: const CircleAvatar(
                             child: Icon(Icons.person),
                           ),
                           title: Text(contact.name,
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(contact.number),
                         ),
                       ),
                     );
                   },
                 )
-              : Center(
+              : const Center(
                   child: Text(
                     "No Contact",
                     style: TextStyle(

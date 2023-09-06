@@ -11,7 +11,7 @@ class iOS_homePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          backgroundColor: Colors.purple.shade900,
+          backgroundColor: CupertinoColors.systemIndigo,
           middle: Text(
             "Contact App",
             style: TextStyle(
@@ -40,7 +40,7 @@ class iOS_homePage extends StatelessWidget {
               Provider.of<navigationbarController>(context, listen: false)
                   .changeScreen(index: index);
             },
-            activeColor: Colors.purple.shade900,
+            activeColor: CupertinoColors.systemIndigo,
             items: [
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.person_add_solid), label: "Add"),

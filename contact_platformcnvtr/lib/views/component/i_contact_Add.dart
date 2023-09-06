@@ -15,85 +15,89 @@ class iOScontactAdd extends StatelessWidget {
     name = contact = email = time = date = msg = "";
     return CupertinoPageScaffold(
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: Colors.purple.shade900,
+                  color: CupertinoColors.inactiveGray.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(10)),
-              padding: EdgeInsets.only(right: 30, top: 10, bottom: 10),
+              padding: const EdgeInsets.only(right: 30, top: 10, bottom: 10),
               width: double.infinity,
               child: Column(
                 children: [
                   CupertinoTextFormFieldRow(
                     onChanged: (val) => name = val,
-                    prefix: SizedBox(
+                    placeholder: "Enter Name",
+                    prefix: const SizedBox(
                         width: 50,
                         child: Icon(
                           CupertinoIcons.person,
-                          color: Colors.white,
+                          color: CupertinoColors.systemIndigo,
                         )),
-                    decoration: BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
                     onChanged: (val) => contact = val,
                     keyboardType: TextInputType.number,
-                    prefix: SizedBox(
+                    placeholder: "Enter Number",
+                    prefix: const SizedBox(
                         width: 50,
                         child: Icon(
                           CupertinoIcons.phone_fill,
-                          color: Colors.white,
+                          color: CupertinoColors.systemIndigo,
                         )),
-                    decoration: BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
                     onChanged: (val) => email = val,
-                    prefix: SizedBox(
+                    placeholder: "Enter Email",
+                    prefix: const SizedBox(
                         width: 50,
                         child: Icon(
                           CupertinoIcons.mail_solid,
-                          color: Colors.white,
+                          color: CupertinoColors.systemIndigo,
                         )),
-                    decoration: BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
+                    placeholder: "Enter Chat",
                     onChanged: (val) => msg = val,
-                    prefix: SizedBox(
+                    prefix: const SizedBox(
                         width: 50,
                         child: Icon(
                           CupertinoIcons.chat_bubble_2_fill,
-                          color: Colors.white,
+                          color: CupertinoColors.systemIndigo,
                         )),
-                    decoration: BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.white),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CupertinoButton(
-                  color: Colors.purple.shade900,
-                  child: Text("Time"),
+                  color: CupertinoColors.systemIndigo,
+                  child: const Text("Time"),
                   onPressed: () {},
                 ),
                 CupertinoButton(
-                  color: Colors.purple.shade900,
-                  child: Text("Date"),
+                  color: CupertinoColors.systemIndigo,
+                  child: const Text("Date"),
                   onPressed: () {},
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             CupertinoButton(
-                color: Colors.purple.shade900,
-                child: Text("Done"),
+                color: CupertinoColors.systemIndigo,
+                child: const Text("Done"),
                 onPressed: () {
                   Contact c = Contact(
                     name: name,
