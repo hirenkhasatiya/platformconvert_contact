@@ -34,7 +34,9 @@ class iOSchatPage extends StatelessWidget {
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(contact.message),
-                          trailing: Text(contact.Time),
+                          trailing: Text(
+                            "${Provider.Time.hour % 12}:${Provider.Time.minute}",
+                          ),
                         ),
                       ),
                     );

@@ -32,7 +32,7 @@ class contactAdd extends StatelessWidget {
                 TextField(
                   onChanged: (val) => name = val,
                   decoration: InputDecoration(
-                    hintText: "Enter Name",
+                    label: const Text("Enter Name"),
                     icon: Icon(
                       Icons.person,
                       color: Colors.purple.shade900,
@@ -46,7 +46,7 @@ class contactAdd extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   onChanged: (val) => contact = val,
                   decoration: InputDecoration(
-                    hintText: "Enter Number",
+                    label: const Text("Enter Number"),
                     icon: Icon(
                       Icons.dialpad,
                       color: Colors.purple.shade900,
@@ -59,7 +59,7 @@ class contactAdd extends StatelessWidget {
                 TextField(
                   onChanged: (val) => email = val,
                   decoration: InputDecoration(
-                    hintText: "Enter Email",
+                    label: const Text("Enter Email"),
                     icon: Icon(
                       Icons.email,
                       color: Colors.purple.shade900,
@@ -72,7 +72,7 @@ class contactAdd extends StatelessWidget {
                 TextField(
                   onChanged: (val) => msg = val,
                   decoration: InputDecoration(
-                    hintText: "Enter Message",
+                    label: const Text("Enter Message"),
                     icon: Icon(
                       Icons.message,
                       color: Colors.purple.shade900,

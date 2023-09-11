@@ -32,7 +32,7 @@ class iOScontactAdd extends StatelessWidget {
                     prefix: const SizedBox(
                         width: 50,
                         child: Icon(
-                          CupertinoIcons.person,
+                          CupertinoIcons.person_alt,
                           color: CupertinoColors.systemIndigo,
                         )),
                     decoration: const BoxDecoration(color: Colors.white),
@@ -83,12 +83,67 @@ class iOScontactAdd extends StatelessWidget {
                 CupertinoButton(
                   color: CupertinoColors.systemIndigo,
                   child: const Text("Time"),
-                  onPressed: () {},
+                  onPressed: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) => CupertinoActionSheet(
+                        title: const Text("Select Time"),
+                        message: SizedBox(
+                          height: 200,
+                          child: CupertinoDatePicker(
+                            mode: CupertinoDatePickerMode.time,
+                            onDateTimeChanged: (time) {
+                              Provider.of<contactController>(context,
+                                      listen: false)
+                                  .timeChange(
+                                      time: TimeOfDay.fromDateTime(time));
+                            },
+                          ),
+                        ),
+                        cancelButton: CupertinoActionSheetAction(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text("Cancel"),
+                          isDestructiveAction: true,
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 CupertinoButton(
                   color: CupertinoColors.systemIndigo,
                   child: const Text("Date"),
-                  onPressed: () {},
+                  onPressed: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) => CupertinoActionSheet(
+                        title: const Text("Select Date"),
+                        message: SizedBox(
+                          height: 200,
+                          child: CupertinoDatePicker(
+                            mode: CupertinoDatePickerMode.date,
+                            initialDateTime: Provider.of<contactController>(
+                                    context,
+                                    listen: false)
+                                .Date,
+                            onDateTimeChanged: (date) {
+                              Provider.of<contactController>(context,
+                                      listen: false)
+                                  .dateTimeChange(dateTime: date);
+                            },
+                          ),
+                        ),
+                        cancelButton: CupertinoActionSheetAction(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text("Cancel"),
+                          isDestructiveAction: true,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

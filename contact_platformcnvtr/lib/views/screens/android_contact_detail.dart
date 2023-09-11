@@ -29,6 +29,7 @@ class A_DetailPage extends StatelessWidget {
                 ),
                 PopupMenuItem(
                   onTap: () {
+                    Provider.removeContact(index: contact_detail);
                     Navigator.of(context).pop();
                   },
                   child: const Text("Delete Contact"),

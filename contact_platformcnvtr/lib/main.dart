@@ -77,7 +77,11 @@ class MyApp extends StatelessWidget {
           )
         : CupertinoApp(
             debugShowCheckedModeBanner: false,
-            theme: const CupertinoThemeData(brightness: Brightness.light),
+            theme: CupertinoThemeData(
+                brightness: Provider.of<themeController>(context, listen: false)
+                        .getTheme
+                    ? Brightness.dark
+                    : Brightness.light),
             routes: {
               '/': (context) => const iOS_homePage(),
               'Detail_Page': (context) => const i_DetailPage(),
