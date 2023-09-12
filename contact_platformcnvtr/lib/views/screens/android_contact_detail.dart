@@ -98,10 +98,7 @@ class A_DetailPage extends StatelessWidget {
                         ),
                         FloatingActionButton(
                           backgroundColor: Colors.purple.shade900,
-                          onPressed: () async {
-                            // await Share.share(
-                            //     "${contact.name} \n\n${contact.number}");
-                          },
+                          onPressed: () {},
                           child: const Icon(
                             Icons.share,
                             color: Colors.white,
